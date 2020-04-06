@@ -15,7 +15,7 @@ class proxy_anchor_loss(nn.Module):
         init.kaiming_uniform_(self.proxy, a=math.sqrt(5))
 
     def forward(self, input, target):
-        # input already l2_normalized
+        input = F.normalize(input, p=2, dim=1)
         self.proxy_l2 = F.normalize(self.proxy, p=2, dim=0)
         
         # N, dim, cls
