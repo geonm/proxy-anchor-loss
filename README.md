@@ -12,6 +12,7 @@ Unofficial **_pytorch_**, **_tensorflow_** and **_mxnet_** implementations of Pr
 ## Results
 ### CARS196
 <img src="figure/cars196_results.png">
+
 + red one => proxy anchor loss
 + blue one => norm softmax
 
