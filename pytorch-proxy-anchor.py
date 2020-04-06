@@ -33,4 +33,4 @@ class proxy_anchor_loss(nn.Module):
 
         loss = pos_term + neg_term
 
-        return loss, self.alpha
+        return loss

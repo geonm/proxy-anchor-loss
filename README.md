@@ -1,10 +1,10 @@
 ## Proxy Anchor Loss for Deep Metric Learning
-Unofficial implementation of Proxy Anchor Loss for Deep Metric Learning. [ref](https://arxiv.org/abs/2003.13911)
+Unofficial _pytorch_, _tensorflow_ and _mxnet_implementations of Proxy Anchor Loss for Deep Metric Learning. [ref](https://arxiv.org/abs/2003.13911)
 
 ### TODO list
 + [x] pytorch version
-+ [ ] tensorflow version
-+ [ ] mxnet version
++ [x] tensorflow version
++ [x] mxnet version
 
 ### Overview
 <img src="figure/proxy_anchor_loss.png" width="300">
