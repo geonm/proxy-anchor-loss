@@ -19,9 +19,11 @@ Unofficial **_pytorch_**, **_tensorflow_** and **_mxnet_** implementations of Pr
 
 ## Reference
 ```
-@article{kimproxy,
+@inproceedings{kim2020proxy,
   title={Proxy Anchor Loss for Deep Metric Learning},
-    author={Kim, Sungyeon and Kim, Dongwon and Cho, Minsu and Kwak, Suha}
+  author={Kim, Sungyeon and Kim, Dongwon and Cho, Minsu and Kwak, Suha},
+  booktitle={Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition},
+  year={2020}
 }
 ```
 
