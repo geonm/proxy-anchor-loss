@@ -29,11 +29,11 @@ class proxy_anchor_loss(nn.Module):
         pos_target = F.one_hot(target, self.n_classes).float()
         neg_target = 1.0 - pos_target
         
-        pos_mat = sim_mat * pos_target
-        neg_mat = sim_mat * neg_target
+        pos_mat = (sim_mat - self.delta) * pos_target
+        neg_mat = (sim_mat + self.delta) * neg_target
 
-        pos_term = 1.0 / torch.unique(target).shape[0] * torch.sum(torch.log(1.0 + torch.sum(torch.exp(-self.alpha * (pos_mat - self.delta)), axis=0)))
-        neg_term = 1.0 / self.n_classes * torch.sum(torch.log(1.0 + torch.sum(torch.exp(self.alpha * (neg_mat + self.delta)), axis=0)))
+        pos_term = 1.0 / torch.unique(target).shape[0] * torch.sum(torch.log(1.0 + torch.sum(torch.exp(-self.alpha * pos_mat), axis=0)))
+        neg_term = 1.0 / self.n_classes * torch.sum(torch.log(1.0 + torch.sum(torch.exp(self.alpha * neg_mat), axis=0)))
 
         loss = pos_term + neg_term
 

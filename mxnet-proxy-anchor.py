@@ -23,11 +23,11 @@ class proxy_anchor_loss(mx.gluon.loss.Loss):
         pos_target = F.one_hot(target, self.n_classes)
         neg_target = 1.0 - pos_target
         
-        pos_mat = sim_mat * pos_target
-        neg_mat = sim_mat * neg_target
+        pos_mat = (sim_mat - self.delta) * pos_target
+        neg_mat = (sim_mat + self.delta) * neg_target
 
-        pos_term = 1.0 / self.n_unique * F.sum(F.log(1.0 + F.sum(F.exp(-self.alpha * (pos_mat - self.delta)), axis=0)))
-        neg_term = 1.0 / self.n_classes * F.sum(F.log(1.0 + F.sum(F.exp(self.alpha * (neg_mat + self.delta)), axis=0)))
+        pos_term = 1.0 / self.n_unique * F.sum(F.log(1.0 + F.sum(F.exp(-self.alpha * pos_mat), axis=0)))
+        neg_term = 1.0 / self.n_classes * F.sum(F.log(1.0 + F.sum(F.exp(self.alpha * neg_mat), axis=0)))
         
         loss = pos_term + neg_term
 
