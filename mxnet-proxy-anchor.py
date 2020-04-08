@@ -1,6 +1,10 @@
 import mxnet
 
 class proxy_anchor_loss(mx.gluon.loss.Loss):
+    '''
+    ref: https://arxiv.org/abs/2003.13911
+    official pytorch codes: https://github.com/tjddus9597/Proxy-Anchor-CVPR2020
+    '''
     def __init__(self, input_dim, n_classes, n_unique, scale, margin, ctx):
         super(proxy_anchor_loss, self).__init__()
         self.proxy = mxnet.gluon.Parameter('proxy', shape=(n_classes, input_dim))

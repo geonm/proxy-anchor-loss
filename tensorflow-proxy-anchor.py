@@ -3,6 +3,10 @@ import tensorflow as tf
 # use tensorflow graph with tf 1.xx version
 
 def proxy_anchor_loss(embeddings, target, n_classes, n_unique, input_dim, scale, margin):
+    '''
+    ref: https://arxiv.org/abs/2003.13911
+    official pytorch codes: https://github.com/tjddus9597/Proxy-Anchor-CVPR2020
+    '''
     # define proxy weights
     proxy = tf.get_variable(name='proxy', shape=[n_classes, input_dim],
                             dtype=tf.float32,

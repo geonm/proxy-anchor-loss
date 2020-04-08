@@ -6,6 +6,10 @@ from torch.nn.parameter import Parameter
 from torch.nn import init
 
 class proxy_anchor_loss(nn.Module):
+    '''
+    ref: https://arxiv.org/abs/2003.13911
+    official pytorch codes: https://github.com/tjddus9597/Proxy-Anchor-CVPR2020
+    '''
     def __init__(self, input_dim, n_classes, scale, margin):
         super(proxy_anchor_loss, self).__init__()
         self.proxy = Parameter(torch.Tensor(input_dim, n_classes))
