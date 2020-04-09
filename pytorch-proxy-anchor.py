@@ -16,7 +16,7 @@ class proxy_anchor_loss(nn.Module):
         self.n_classes = n_classes
         self.alpha = scale
         self.delta = margin
-        init.kaiming_uniform_(self.proxy, a=math.sqrt(5))
+        init.kaiming_normal_(self.proxy, mode='fan_out')
 
     def forward(self, embeddings, target):
         embeddings_l2 = F.normalize(embeddings, p=2, dim=1)

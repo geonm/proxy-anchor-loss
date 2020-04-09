@@ -7,7 +7,7 @@ class proxy_anchor_loss(mx.gluon.loss.Loss):
     '''
     def __init__(self, input_dim, n_classes, n_unique, scale, margin, ctx):
         super(proxy_anchor_loss, self).__init__()
-        self.proxy = mxnet.gluon.Parameter('proxy', shape=(n_classes, input_dim))
+        self.proxy = mxnet.gluon.Parameter('proxy', shape=(n_classes, input_dim), init=mx.init.Normal())
         self.proxy.initialize(ctx=ctx)
         self.n_classes = n_classes
         self.n_unique = n_unique # n_unique = batch_size // n_instance

@@ -9,6 +9,7 @@ def proxy_anchor_loss(embeddings, target, n_classes, n_unique, input_dim, scale,
     '''
     # define proxy weights
     proxy = tf.get_variable(name='proxy', shape=[n_classes, input_dim],
+                            initializer=tf.random_normal_initializer(),
                             dtype=tf.float32,
                             trainable=True)
     embeddings_l2 = tf.nn.l2_normalize(embeddings, axis=1)
